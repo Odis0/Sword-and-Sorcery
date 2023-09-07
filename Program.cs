@@ -25,7 +25,7 @@ namespace Sword_and_Sorcery
                     //Characters
                     conan
                 };
-            GameWorld gameWorld = new GameWorld();
+            GameWorld gameWorld = new GameWorld(5,5);
             foreach (GameObject i in gameObjectsList)
             {
                 gameWorld.worldArray[i.xLocation, i.yLocation].Add(i);
