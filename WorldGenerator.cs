@@ -8,30 +8,41 @@ namespace Sword_and_Sorcery
 {
     public class WorldGenerator
     {
-        public List<Room> GenerateRooms(int width, int height)
+        public List<Room> GenerateRooms(GameWorld gameWorld, PossibleRooms possibleRooms)
         {
             Random random = new Random();
-            PossibleRooms possibleRooms = new PossibleRooms(); // Create an instance of PossibleRooms
             List<Room> rooms = new List<Room>();
+
+            int width = gameWorld.worldArray.GetLength(0); // Get the width from the gameWorld
+            int height = gameWorld.worldArray.GetLength(1); // Get the height from the gameWorld
 
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    // Generate random coordinates within the bounds of the game world
-                    int x = random.Next(width);
-                    int y = random.Next(height);
-
                     // Randomly select a room from the list of possible rooms
-                    Room selectedRoomInfo = possibleRooms.PossibleRoomList[random.Next(possibleRooms.PossibleRoomList.Count)];
+                    Room selectedRoomInfo = SelectRandomRoom(possibleRooms.PossibleRoomList, random);
 
-                    Room room = new Room(selectedRoomInfo.name, selectedRoomInfo.description, x, y);
+                    // Create a new Room with name, description, and coordinates
+                    Room room = new Room(selectedRoomInfo.name, selectedRoomInfo.description, i, j);
+
+                    // Add the room to the list of rooms
                     rooms.Add(room);
+
+                    // Add the room to the gameWorld
+                    gameWorld.AddObjectToGameWorld(room);
                 }
             }
 
             return rooms;
         }
+
+        private Room SelectRandomRoom(List<Room> possibleRooms, Random random)
+        {
+            // Randomly select a room from the list of possible rooms
+            return possibleRooms[random.Next(possibleRooms.Count)];
+        }
     }
 }
+
 

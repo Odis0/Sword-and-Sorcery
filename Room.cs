@@ -8,7 +8,7 @@ namespace Sword_and_Sorcery
 {
     public class Room : GameObject
     {
-        public Room(string name, string description, int x, int y) : base(name, description, x, y)
+        public Room(string name, string description, int x = 999, int y = 999) : base(name, description, x, y)
         {
         }
     }

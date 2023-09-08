@@ -14,9 +14,9 @@ namespace Sword_and_Sorcery
         {
             PossibleRoomList = new List<Room>
             {
-                new Room("Throne Room", "A luxurious throne room.", 0, 0),
-                new Room("Armory", "An array of weapons and armor line the shelves.", 0, 1),
-                new Room("Bobcat Room", "The decor of this room is distinctly bobcat themed, using many of the cats' pelts.", 0, 2),
+                new Room("Throne Room", "A luxurious throne room."),
+                new Room("Armory", "An array of weapons and armor line the shelves."),
+                new Room("Bobcat Room", "The decor of this room is distinctly bobcat themed, using many of the cats' pelts."),
                 // Add more rooms as needed...
             };
 
