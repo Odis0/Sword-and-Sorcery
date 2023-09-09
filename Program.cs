@@ -49,8 +49,8 @@ namespace Sword_and_Sorcery
             //Game Loop
             while (true)
             {
-                Console.WriteLine($"{gameWorld.worldArray[playerCharacter.xLocation, playerCharacter.yLocation][0].name}\n");
-                Console.WriteLine($"{gameWorld.worldArray[playerCharacter.xLocation, playerCharacter.yLocation][0].description}\n");
+                Console.WriteLine($"{playerCharacter.FindRoomAtObjectLocation(gameWorld.worldArray).name}\n");
+                Console.WriteLine($"{playerCharacter.FindRoomAtObjectLocation(gameWorld.worldArray).description}\n");
 
                 Console.WriteLine("0: Move\n1:Growl");
                 string input1 = Console.ReadLine();

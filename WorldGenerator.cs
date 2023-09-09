@@ -16,6 +16,37 @@ namespace Sword_and_Sorcery
             int width = gameWorld.worldArray.GetLength(0); // Get the width from the gameWorld
             int height = gameWorld.worldArray.GetLength(1); // Get the height from the gameWorld
 
+
+            //First, we fill the array with "empty" rooms.
+            Room emptyRoom = new Room("Empty Room", "The void gapes.");
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+
+                    // Create a new Room with name, description, and coordinates
+                    Room room = new Room(emptyRoom.name, emptyRoom.description, i, j);
+
+                    // Add the room to the list of rooms
+                    rooms.Add(room);
+
+                    // Add the room to the gameWorld
+                    gameWorld.AddObjectToGameWorld(room);
+                }
+            }
+            return rooms;
+        }
+    }
+
+}
+
+
+
+/*
+
+
+        
+            //Insert random room from the list of possible rooms.
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
@@ -45,4 +76,4 @@ namespace Sword_and_Sorcery
     }
 }
 
-
+*/

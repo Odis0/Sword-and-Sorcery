@@ -102,6 +102,26 @@ namespace Sword_and_Sorcery
 
         }
 
-    }
+        public static Room FindRoomAtObjectLocation(this GameObject gameObject, List<GameObject>[,] worldArray)
+        {
+            int x = gameObject.xLocation;
+            int y = gameObject.yLocation;
 
+            // Check if the coordinates are within valid range
+            if (x >= 0 && x < worldArray.GetLength(0) && y >= 0 && y < worldArray.GetLength(1))
+            {
+                List<GameObject> cellContents = worldArray[x, y];
+
+                // Check if the list is not empty and the first item is a Room
+                if (cellContents.Count > 0 && cellContents[0] is Room room)
+                {
+                    return room;
+                }
+            }
+
+            // Return null or handle the case where no room was found
+            return null; // You can return null or handle the case differently based on your requirements
+        }
+
+    }
 }
