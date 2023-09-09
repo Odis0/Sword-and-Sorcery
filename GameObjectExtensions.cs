@@ -23,6 +23,36 @@ namespace Sword_and_Sorcery
             Console.WriteLine($"{gameObject.name} moved to ({xDestination}, {yDestination}).");
         }
 
+        //This function returns what the name of the compass direction is for objects in adjacent location. So if the target object is east, it will return "East". 
+        public static string AdjacentLocationDirectionToSelf(this GameObject gameObject, GameObject adjacentObject)
+        {
+            int xDifference = adjacentObject.xLocation - gameObject.xLocation;
+            int yDifference = adjacentObject.yLocation - gameObject.yLocation;
+
+            if (xDifference == 0 && yDifference == 1)
+            {
+                return "North";
+            }
+            else if (xDifference == 0 && yDifference == -1)
+            {
+                return "South";
+            }
+            else if (xDifference == 1 && yDifference == 0)
+            {
+                return "East";
+            }
+            else if (xDifference == -1 && yDifference == 0)
+            {
+                return "West";
+            }
+            else
+            {
+                // Handle the case where objects are not adjacent or diagonally adjacent
+                return "Unknown";
+            }
+        }
+
+
         public static List<Room> FindAdjacentRooms(this GameObject gameObject, List<GameObject>[,] worldArray)
         {
             int x = gameObject.xLocation;

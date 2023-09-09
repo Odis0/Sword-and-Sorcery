@@ -8,8 +8,6 @@ namespace Sword_and_Sorcery
 {
     class UIPlayerMovement
     {
-        private Character playerCharacter;
-        private GameWorld gameWorld;
 
         public UIPlayerMovement(Character playerCharacter, GameWorld gameWorld)
         {
@@ -22,7 +20,8 @@ namespace Sword_and_Sorcery
                 Console.WriteLine("Where would you like to move to?");
                 foreach (var room in adjacentRooms)
                 {
-                    Console.WriteLine($"{i}:{room.name}");
+                    string adjacentRoomDirection = playerCharacter.AdjacentLocationDirectionToSelf(room);
+                    Console.WriteLine($"{i}:{adjacentRoomDirection} - {room.name}");
                     i++;
                 }
                 Console.WriteLine($"{i}:Back");

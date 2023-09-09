@@ -11,33 +11,6 @@ namespace Sword_and_Sorcery
     class Program
     {
         static void Main(string[] args)
-        /*
-        Room throneRoom = new Room("Throne Room", "A luxurious throne room.", 0, 0);
-        Room armory = new Room("Armory", "An array of weapons and armor line the shelves.", 0, 1);
-        Room bobcatRoom = new Room("Bobcat Room", "The decor of this room is distinctly bobcat themed, using many of the cats' pelts.", 0, 2);
-
-
-
-
-        Character conan = new Character("Conan", "A brutish looking man, with a wise twinkle in his eye.", 0, 0);
-        GameObject[] gameObjectsList =
-        {
-                //Rooms
-                throneRoom,
-                armory,
-                bobcatRoom,
-                //Characters
-                conan
-            };
-
-
-
-        GameWorld gameWorld = new GameWorld(5,5);
-        foreach (GameObject i in gameObjectsList)
-        {
-            gameWorld.worldArray[i.xLocation, i.yLocation].Add(i);
-        }
-        */
 
 
         {
