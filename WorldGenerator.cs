@@ -34,8 +34,111 @@ namespace Sword_and_Sorcery
                     gameWorld.AddObjectToGameWorld(room);
                 }
             }
+
+
+            //Next, we transform those empty rooms into rooms of a type.
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    // Create a new list of all possible indices
+                    List<int> allIndices = Enumerable.Range(0, possibleRooms.PossibleRoomList.Count).ToList();
+
+                    // Create a list of available indices initially containing all indices
+                    List<int> availableIndices = new List<int>(allIndices);
+
+                    while (availableIndices.Count > 0)
+                    {
+                        // Randomly select an index from the available indices
+                        int randomIndex = random.Next(availableIndices.Count);
+                        int selectedIndex = availableIndices[randomIndex];
+
+                        // Get the selected room from the possible rooms list
+                        Room selectedRoomInfo = possibleRooms.PossibleRoomList[selectedIndex];
+
+                        // Check conditions for placement here
+                        if (MeetsPlacementCriteria(i, j, gameWorld, selectedRoomInfo))
+                        {
+                            // Create a new Room with name, description, and coordinates
+                            Room room = new Room(selectedRoomInfo.name, selectedRoomInfo.description, i, j);
+                            gameWorld.worldArray[i, j][0] = room;
+
+                            // Remove the selected index from availableIndices
+                            availableIndices.RemoveAt(randomIndex);
+
+                            break;
+                        }
+                        else
+                        {
+                            // Remove the selected index from availableIndices and continue
+                            availableIndices.RemoveAt(randomIndex);
+                        }
+                    }
+                }
+            }
+
+
+
+
             return rooms;
         }
+        private Room SelectRandomRoom(List<Room> possibleRooms, Random random)
+        {
+            // Randomly select a room from the list of possible rooms
+            return possibleRooms[random.Next(possibleRooms.Count)];
+        }
+
+        // Define your criteria-checking method
+        private bool MeetsPlacementCriteria(int x, int y, GameWorld gameWorld, Room selectedRoom)
+        {
+            if (selectedRoom.name == "Shrine")
+            {
+                return false;
+            }
+            if (selectedRoom.name == "adsf")
+            {
+                return false;
+            }
+            if (selectedRoom.name == "dsf")
+            {
+                return false;
+            }
+            if (selectedRoom.name == "")
+            {
+                return false;
+            }
+
+
+
+
+            // Implement your criteria logic here
+            // For example, check if there's already a room of a certain type nearby
+            // Or check if there's a road nearby, etc.
+            return true; // Return true if the criteria are met, otherwise, return false
+        }
+
+        public int CountRoomsOfType(GameWorld gameWorld, Type type)
+        {
+            int count = 0;
+            int width = gameWorld.worldArray.GetLength(0);
+            int height = gameWorld.worldArray.GetLength(1);
+
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    // Check if the cell contains a room and if its type matches the specified type
+                    if (gameWorld.worldArray[i, j].Count > 0 && gameWorld.worldArray[i, j][0].GetType() == type)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            return count;
+        }
+
+
     }
 
 }
@@ -67,7 +170,7 @@ namespace Sword_and_Sorcery
 
             return rooms;
         }
-
+/
         private Room SelectRandomRoom(List<Room> possibleRooms, Random random)
         {
             // Randomly select a room from the list of possible rooms
