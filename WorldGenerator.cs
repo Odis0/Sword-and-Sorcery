@@ -96,12 +96,12 @@ namespace Sword_and_Sorcery
                 return false;
             }
             //There can only be one shrine in the game world at the moment.
-            if ((CountRoomsOfType(gameWorld,"Shrine")>0)&&(selectedRoom.name =="Shrine"))
+            if ((selectedRoom.name == "Shrine") && (CountRoomsOfType(gameWorld,"Shrine")>0))
             {
                 return false;
             }
             //There can only be one shrine in the game world at the moment.
-            if ((CountRoomsOfType(gameWorld, "Fortress Ruins") > 0) && (selectedRoom.name == "Fortress Ruins"))
+            if ((selectedRoom.name == "Fortress Ruins") && (CountRoomsOfType(gameWorld, "Fortress Ruins") > 0))
             {
                 return false;
             }
