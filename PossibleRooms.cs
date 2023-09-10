@@ -23,7 +23,10 @@ namespace Sword_and_Sorcery
                 new Room("Hut","This is a hut."),
                 new Room("Road","This is a road."),
                 new Room("Forest","This is a dark forest."),
-                new Room("Well","You are standing by a well.")
+                new Room("Well","You are standing by a well."),
+                new Room("Plains","Dusty plains here. Really dusty."),
+                new Room("Pond","You're standing next to a pond. It looks deep."),
+                new Room("Fortress Ruins","You are standing by the ruins of an ancient fortress--so ancient that the bones of the dead have turned to dust.")
             };
 
 
