@@ -65,7 +65,7 @@ namespace Sword_and_Sorcery
 
                             // Remove the selected index from availableIndices
                             availableIndices.RemoveAt(randomIndex);
-
+                            Console.WriteLine($"{i},{j} - {room.name}");
                             break;
                         }
                         else
