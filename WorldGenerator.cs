@@ -91,11 +91,11 @@ namespace Sword_and_Sorcery
         // Define your criteria-checking method
         private bool MeetsPlacementCriteria(int x, int y, GameWorld gameWorld, Room selectedRoom)
         {
-            if (selectedRoom.name == "Shrine")
+            if (selectedRoom.name == "")
             {
                 return false;
             }
-            if (selectedRoom.name == "adsf")
+            if ((CountRoomsOfType(gameWorld,"Shrine")>0)&&(selectedRoom.name =="Shrine"))
             {
                 return false;
             }
@@ -117,7 +117,7 @@ namespace Sword_and_Sorcery
             return true; // Return true if the criteria are met, otherwise, return false
         }
 
-        public int CountRoomsOfType(GameWorld gameWorld, Type type)
+        public int CountRoomsOfType(GameWorld gameWorld, string type)
         {
             int count = 0;
             int width = gameWorld.worldArray.GetLength(0);
@@ -128,7 +128,7 @@ namespace Sword_and_Sorcery
                 for (int j = 0; j < height; j++)
                 {
                     // Check if the cell contains a room and if its type matches the specified type
-                    if (gameWorld.worldArray[i, j].Count > 0 && gameWorld.worldArray[i, j][0].GetType() == type)
+                    if (gameWorld.worldArray[i, j].Count > 0 && gameWorld.worldArray[i, j][0].name == type)
                     {
                         count++;
                     }
